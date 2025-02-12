@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will You Be My Valentine? ❤️</title>
     <style>
-        /* CSS */
         body {
             margin: 0;
             height: 100vh;
@@ -15,6 +14,7 @@
             background: linear-gradient(45deg, #ff99cc, #ff6699);
             font-family: 'Brush Script MT', cursive;
             overflow: hidden;
+            flex-direction: column;
         }
 
         .container {
@@ -55,82 +55,56 @@
             transform: scale(1.1);
         }
 
-        .hearts {
-            position: fixed;
-            pointer-events: none;
+        .hidden-message {
+            display: none;
+            margin-top: 2rem;
+            font-size: 2em;
+            color: #ff3366;
+            animation: fadeIn 1.5s;
         }
 
-        .heart {
-            position: absolute;
-            color: #ff3366;
-            animation: float 3s infinite;
+        .gallery {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s;
         }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-
-        .hidden-message {
-            display: none;
-            margin-top: 2rem;
-            font-size: 2em;
-            color: #ff3366;
-        }
     </style>
 </head>
 <body>
-    <!-- HTML -->
-    <div class="hearts" id="heartsContainer"></div>
-    
     <div class="container">
-        <h1>My Dearest Nikee ❤️</h1>
-        <p>Every moment with you feels like a beautiful dream...</p>
-        <p>Would you make me the happiest person and</p>
+        <h1>My Dearest [Her Name] ❤️</h1>
+        <p>Every moment with you is magical, filled with laughter, joy, and love.</p>
+        <p>Would you make me the happiest person by being my Valentine?</p>
         <button class="heart-btn" onclick="showResponse()">Be My Valentine?</button>
         <div id="response" class="hidden-message"></div>
+        
+        <div class="gallery">
+            <img src="IMG-20231105-WA0121.jpg" alt="Us together">
+            <img src="IMG-20241123-WA0051.jpg" alt="Cute memory">
+            <img src="N&C-Clifton-32.jpg" alt="Our happiest moment">
+        </div>
     </div>
 
     <script>
-        // JavaScript
-        function createHearts() {
-            const heartsContainer = document.getElementById('heartsContainer');
-            for (let i = 0; i < 50; i++) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤';
-                heart.className = 'heart';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                heartsContainer.appendChild(heart);
-            }
-        }
-
         function showResponse() {
             const response = document.getElementById('response');
             response.style.display = 'block';
             response.innerHTML = "YAY! I can't wait to celebrate with you! 💕";
-            
-            // Add celebration effect
-            for(let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.innerHTML = '❤';
-                confetti.style.position = 'fixed';
-                confetti.style.color = '#ff3366';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.animation = 'float 2s forwards';
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 2000);
-            }
         }
-
-        // Initialize hearts when page loads
-        window.onload = createHearts;
     </script>
 </body>
 </html>
